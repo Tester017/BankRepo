@@ -1,0 +1,210 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>mav.bank.fab</groupId>
+	<artifactId>BankRepo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>FAB - UI Automation Suite</name>
+	<description>UI Automation Project - Maveric Automation Framework for UI Automation</description>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>xml-gen</id>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>mav.bank.framework.XMLCreator</mainClass>
+					<systemProperties>
+						<systemProperty>
+							<key>ResSuite</key>
+							<value>${ResSuite}</value>
+						</systemProperty>
+					</systemProperties>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<trimStackTrace>false</trimStackTrace>
+					<suiteXmlFiles>
+						<!-- <suiteXmlFile>testng_01.xml</suiteXmlFile> -->
+						<suiteXmlFile>TestNgD.xml</suiteXmlFile>
+						<suiteXmlFile>TestNgM.xml</suiteXmlFile>
+						<suiteXmlFile>TestNgB.xml</suiteXmlFile>
+					</suiteXmlFiles>
+					<properties>
+						<property>
+							<name>suitethreadpoolsize</name>
+							<value>15</value>
+						</property>
+					</properties>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>project.local</id>
+			<name>project</name>
+			<url>file:${project.basedir}/local_repository</url> 
+		</repository>
+		<repository>
+			<id>gitlab-gitlab-ce</id>
+			<url>https://packages.gitlab.com/gitlab/gitlab-ce/maven2</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.13.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>3.13.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.7</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+		<dependency> <groupId>org.testng</groupId> <artifactId>testng</artifactId> 
+			<version>6.9.7-UM-1.0</version> </dependency> 
+
+		<dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.14</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.14</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>4.1.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpmime</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/log4j/log4j -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-email -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-email</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.jayway.restassured/rest-assured -->
+		<dependency>
+			<groupId>com.jayway.restassured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured-common -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured-common</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/json-schema-validator -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.galenframework/galen-java-support -->
+		<dependency>
+			<groupId>com.galenframework</groupId>
+			<artifactId>galen-java-support</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+	<!-- 	<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>3.0.2</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/net.htmlparser.jericho/jericho-html -->
+		<dependency>
+    		<groupId>net.htmlparser.jericho</groupId>
+    		<artifactId>jericho-html</artifactId>
+    		<version>3.4</version>
+		</dependency>
+	</dependencies>
+
+</project>

@@ -1,0 +1,22 @@
+target/
+custom_report/
+.classpath
+.project
+.settings/
+BackBaseData/BB-SIT-DATA.xlsx
+BackBaseData/~$BB-SIT-DATA.xlsx
+BackBaseTestPack/combination.json
+BackBaseTestPack/ScenarioSheet.xlsx
+BackBaseTestPack/~$ScenarioSheet.xlsx
+TestNgD.xml
+BackBaseData/BB-SIT-DATA - NewCases.xlsx
+BackBaseData/~$BB-SIT-DATA - NewCases.xlsx
+BackBaseTT/~$ScenarioSheet.xlsx
+BackBaseTT/ScenarioSheet.xlsx
+BackBaseTT/combination.json
+BackBaseTT/combinationBS.json
+BackBaseTT/projectconfig.properties
+.idea*
+*.xls#
+*.xlsx#
+*.iml
