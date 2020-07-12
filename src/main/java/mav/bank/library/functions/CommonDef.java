@@ -44,7 +44,7 @@ import mav.bank.framework.ConfigProvider;
 import mav.bank.framework.ExReporter;
 import mav.bank.framework.ProjectConfig;
 import mav.bank.framework.TestData;
-import mav.bank.pom.elements.fab.FundsTransferPage;
+import mav.bank.pom.elements.bsf.FundsTransferPage;
 import mav.bank.utilities.enums.Locators;
 
 /**	

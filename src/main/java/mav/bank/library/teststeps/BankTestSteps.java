@@ -7,7 +7,7 @@ import mav.bank.framework.ConfigProvider;
 import mav.bank.framework.ExReporter;
 import mav.bank.framework.ProjectConfig;
 import mav.bank.framework.TestData;
-import mav.bank.pom.functions.fab.BankFunctions;
+import mav.bank.pom.functions.bsf.BankFunctions;
 
 /**	
 * Class Name			:	RAKTestSteps
@@ -700,6 +700,15 @@ public class BankTestSteps {
 				System.out.print(" \n Into outlookLogin in Test Steps \n ");
 				BankFunctions.outlookLogin();
 				//BankFunctions.connectLogin_Static();
+			} catch (Exception e) {
+				ExReporter.log(LogStatus.FAIL, e.getMessage());
+			}
+		}
+		
+		public void updateTimesheet() {
+			try { 
+				BankFunctions.openAirFromOutlook();
+				BankFunctions.updateTimesheet();
 			} catch (Exception e) {
 				ExReporter.log(LogStatus.FAIL, e.getMessage());
 			}

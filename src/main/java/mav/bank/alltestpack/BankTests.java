@@ -5,6 +5,7 @@ import java.util.Map;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
+import mav.bank.framework.TestData;
 import mav.bank.library.teststeps.BankTestSteps;
 
 //Test Push 2
@@ -556,7 +557,27 @@ public class BankTests extends BankTestNGMethods {
 			throws InterruptedException {
 		System.out.print(" \n Into RAKTests \n ");
 		BankTestSteps steps = new BankTestSteps();
+		String[] lifecycles = TestData.getConfig("dfy").split(";");
 		steps.outlookLogin();
+		}
+	
+	@Test(description = "First Test Selenium 3.14", dataProvider = "TestDataParallel")
+	public static void openAir(Map<String, String> brow, Map<String, String> data, ITestContext ctx)
+			throws InterruptedException {
+		BankTestSteps steps = new BankTestSteps();
+		String[] lifecycles = TestData.getConfig("Lifecycles").split(";");
+		for (String lifecycle : lifecycles) {
+				
+		switch(lifecycle)
+		{
+		case "outlookLogin":
+			steps.outlookLogin();
+			break;
+		case "openAirProcess":
+			steps.updateTimesheet();
+			break;	
 		
 		}
+		}
+	}
 }

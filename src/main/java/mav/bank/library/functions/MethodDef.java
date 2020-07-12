@@ -282,8 +282,8 @@ public class MethodDef {
 		ExReporter.log(LogStatus.INFO, "URL Loaded: " + ProjectConfig.getPropertyValue("url"));
 		CommonDef.waitForPageLoad();
 	}
-
 	
+		
 	public static void getResponseCodes(By topNavBarLinks, String testItem) {
 		ExReporter.logNoScreen(LogStatus.INFO, "Validating hyperlink in: " + testItem);
 		for (WebElement web : CommonDef.findElements(topNavBarLinks))

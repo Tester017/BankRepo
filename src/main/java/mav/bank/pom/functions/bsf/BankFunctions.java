@@ -1,4 +1,4 @@
-package mav.bank.pom.functions.fab;
+package mav.bank.pom.functions.bsf;
 
 import org.openqa.selenium.By;
 
@@ -10,10 +10,12 @@ import mav.bank.framework.ProjectConfig;
 import mav.bank.framework.TestData;
 import mav.bank.library.functions.CommonDef;
 import mav.bank.library.functions.MethodDef;
-import mav.bank.pom.elements.fab.FundsTransferPage;
-import mav.bank.pom.elements.fab.HistoryPage;
-import mav.bank.pom.elements.fab.PayCardsPage;
-import mav.bank.pom.elements.fab.outlookLogin;
+import mav.bank.pom.elements.bsf.FundsTransferPage;
+import mav.bank.pom.elements.bsf.HistoryPage;
+import mav.bank.pom.elements.bsf.PayCardsPage;
+import mav.bank.pom.elements.bsf.openAirHome;
+import mav.bank.pom.elements.bsf.outlookHome;
+import mav.bank.pom.elements.bsf.outlookLogin;
 
 /**	
 * Class Name			:	RakFunctions
@@ -3755,4 +3757,69 @@ public class BankFunctions {
 	}
 	
 }
+	public static void openAirFromOutlook() {
+		try {
+			
+			MethodDef.click(outlookHome.menuNavigation());
+			MethodDef.click(outlookHome.openAirMenu());
+						
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			ExReporter.log(LogStatus.FAIL, e.getMessage());
+	}
+	}
+	
+	public static void updateTimesheet() {
+		try {
+			
+			if(TestData.getConfig("timesheetCreated").equalsIgnoreCase("Yes"))
+			{
+				MethodDef.click(openAirHome.timesheetMenu());
+				MethodDef.click(openAirHome.categoryTimeSheet(TestData.getConfig("timesheetCategory")));
+				MethodDef.click(openAirHome.selectTimesheet(TestData.getConfig("weekstarting")));
+			}
+			else
+			{
+				MethodDef.click(openAirHome.createMenu());
+				MethodDef.click(openAirHome.timesheetNew());
+				CommonDef.dropdown(openAirHome.createTimesheetDropDown(), TestData.getConfig("weekstarting"));
+				MethodDef.click(openAirHome.saveCreatedTimesheet());
+			}
+			
+			CommonDef.dropdown(openAirHome.DropDown("ts_c1_r1"), TestData.getConfig("project"));
+			CommonDef.dropdown(openAirHome.DropDown("ts_c2_r1"), TestData.getConfig("task"));
+			CommonDef.dropdown(openAirHome.DropDown("ts_c3_r1"), TestData.getConfig("timeType"));
+			CommonDef.dropdown(openAirHome.DropDown("ts_c4_r1"), TestData.getConfig("location"));
+			
+			updateHours("ts_c5_r1","mon");
+			updateHours("ts_c6_r1","tue");
+			updateHours("ts_c7_r1","wed");
+			updateHours("ts_c8_r1","thu");
+			updateHours("ts_c11_r1","sun");
+			
+			CommonDef.dropdown(openAirHome.DropDown("ts_c1_r2"), TestData.getConfig("project2"));
+			CommonDef.dropdown(openAirHome.DropDown("ts_c2_r2"), TestData.getConfig("task2"));
+			CommonDef.dropdown(openAirHome.DropDown("ts_c3_r2"), TestData.getConfig("timeType2"));
+			CommonDef.dropdown(openAirHome.DropDown("ts_c4_r2"), TestData.getConfig("location2"));
+			
+			updateHours("ts_c9_r2","fri");
+			updateHours("ts_c10_r2","sat");
+			
+			MethodDef.click(openAirHome.saveSubmitButton());
+
+		}
+		catch (Exception e) {
+			// TODO Auto-generated catch block
+			ExReporter.log(LogStatus.FAIL, e.getMessage());
+	}
+	}
+	public static void updateHours(String column,String week) {
+		MethodDef.sendKeys(openAirHome.inputHours(column), TestData.getConfig(week));
+		MethodDef.click(openAirHome.addtlInfoLink(column));
+		CommonDef.dropdown(openAirHome.premiseSelect(),TestData.getConfig("premise"));	
+		MethodDef.click(openAirHome.addtlInfoOK());
+	
+	}
+
 	}

@@ -1,4 +1,4 @@
-package mav.bank.pom.elements.fab;
+package mav.bank.pom.elements.bsf;
 
 import org.openqa.selenium.By;
 
