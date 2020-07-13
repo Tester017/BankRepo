@@ -20,6 +20,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 
 import mav.bank.driver.DriverFactory;
@@ -28,6 +29,7 @@ import mav.bank.framework.ExReporter;
 import mav.bank.framework.ExcelReader;
 import mav.bank.framework.SyncMap;
 import mav.bank.framework.TestData;
+import mav.bank.listeners.TestJiraListener;
 
 /**	
 * Class Name			:	RAKTestNGMethods
@@ -36,6 +38,7 @@ import mav.bank.framework.TestData;
 * Date Last Modified	:	20-Aug-2016
 */
 
+@Listeners(TestJiraListener.class)
 public class BankTestNGMethods {
 
 	public ExReporter classReport;

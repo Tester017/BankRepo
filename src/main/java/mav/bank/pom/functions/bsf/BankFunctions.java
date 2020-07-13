@@ -1,7 +1,11 @@
 package mav.bank.pom.functions.bsf;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.openqa.selenium.By;
 
+import com.gargoylesoftware.htmlunit.javascript.host.Map;
 import com.relevantcodes.extentreports.LogStatus;
 
 import mav.bank.framework.ConfigProvider;
@@ -3787,26 +3791,62 @@ public class BankFunctions {
 				MethodDef.click(openAirHome.saveCreatedTimesheet());
 			}
 			
-			CommonDef.dropdown(openAirHome.DropDown("ts_c1_r1"), TestData.getConfig("project"));
-			CommonDef.dropdown(openAirHome.DropDown("ts_c2_r1"), TestData.getConfig("task"));
-			CommonDef.dropdown(openAirHome.DropDown("ts_c3_r1"), TestData.getConfig("timeType"));
-			CommonDef.dropdown(openAirHome.DropDown("ts_c4_r1"), TestData.getConfig("location"));
+			HashMap<String, Integer> weekColumn = new HashMap<String,Integer>();
+			weekColumn.put("mon", 5);
+			weekColumn.put("tue", 6);
+			weekColumn.put("wed", 7);
+			weekColumn.put("thu", 8);
+			weekColumn.put("fri", 9);
+			weekColumn.put("sat", 10);
+			weekColumn.put("sun", 11);
+
+			ArrayList<String> rowExecution = new ArrayList<String>();
+			String[] elementList = TestData.getConfig("rowDriver").split("_");
+			int rowCount=elementList.length;
 			
-			updateHours("ts_c5_r1","mon");
-			updateHours("ts_c6_r1","tue");
-			updateHours("ts_c7_r1","wed");
-			updateHours("ts_c8_r1","thu");
-			updateHours("ts_c11_r1","sun");
+			for(int i=0;i<elementList.length;i++) rowExecution.add(elementList[i]);
 			
-			CommonDef.dropdown(openAirHome.DropDown("ts_c1_r2"), TestData.getConfig("project2"));
-			CommonDef.dropdown(openAirHome.DropDown("ts_c2_r2"), TestData.getConfig("task2"));
-			CommonDef.dropdown(openAirHome.DropDown("ts_c3_r2"), TestData.getConfig("timeType2"));
-			CommonDef.dropdown(openAirHome.DropDown("ts_c4_r2"), TestData.getConfig("location2"));
+			for(int i=1;i<=rowCount;i++)
+			{
+				CommonDef.dropdown(openAirHome.DropDown("ts_c1_r"+i), TestData.getConfig("project"+i));
+				CommonDef.dropdown(openAirHome.DropDown("ts_c2_r"+i), TestData.getConfig("task"+i));
+				CommonDef.dropdown(openAirHome.DropDown("ts_c3_r"+i), TestData.getConfig("timeType"+i));
+				CommonDef.dropdown(openAirHome.DropDown("ts_c4_r"+i), TestData.getConfig("location"+i));
+				
+				for (String weekInput : rowExecution) 
+				{
+					String[] weeks = weekInput.split(";");
+					for (String week : weeks) 
+					{
+						String column = "ts_c"+weekColumn.get(week)+"_r"+i;
+						MethodDef.sendKeys(openAirHome.inputHours(column), TestData.getConfig(weekInput+i));
+						MethodDef.click(openAirHome.addtlInfoLink(column));
+						CommonDef.dropdown(openAirHome.premiseSelect(),TestData.getConfig("premise"));	
+						MethodDef.click(openAirHome.addtlInfoOK());
+					}
+				}
+			}
 			
-			updateHours("ts_c9_r2","fri");
-			updateHours("ts_c10_r2","sat");
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c1_r1"), TestData.getConfig("project"));
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c2_r1"), TestData.getConfig("task"));
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c3_r1"), TestData.getConfig("timeType"));
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c4_r1"), TestData.getConfig("location"));
 			
-			MethodDef.click(openAirHome.saveSubmitButton());
+//			updateHours("ts_c5_r1","mon");
+//			updateHours("ts_c6_r1","tue");
+//			updateHours("ts_c7_r1","wed");
+//			updateHours("ts_c8_r1","thu");
+//			updateHours("ts_c11_r1","sun");
+//			
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c1_r2"), TestData.getConfig("project2"));
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c2_r2"), TestData.getConfig("task2"));
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c3_r2"), TestData.getConfig("timeType2"));
+//			CommonDef.dropdown(openAirHome.DropDown("ts_c4_r2"), TestData.getConfig("location2"));
+//			
+//			updateHours("ts_c9_r2","fri");
+//			updateHours("ts_c10_r2","sat");
+			
+//			MethodDef.click(openAirHome.saveSubmitButton());
 
 		}
 		catch (Exception e) {
@@ -3814,12 +3854,4 @@ public class BankFunctions {
 			ExReporter.log(LogStatus.FAIL, e.getMessage());
 	}
 	}
-	public static void updateHours(String column,String week) {
-		MethodDef.sendKeys(openAirHome.inputHours(column), TestData.getConfig(week));
-		MethodDef.click(openAirHome.addtlInfoLink(column));
-		CommonDef.dropdown(openAirHome.premiseSelect(),TestData.getConfig("premise"));	
-		MethodDef.click(openAirHome.addtlInfoOK());
-	
-	}
-
 	}

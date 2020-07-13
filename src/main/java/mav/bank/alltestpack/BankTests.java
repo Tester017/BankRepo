@@ -5,6 +5,7 @@ import java.util.Map;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
+import mav.bank.framework.JiraPolicy;
 import mav.bank.framework.TestData;
 import mav.bank.library.teststeps.BankTestSteps;
 
@@ -552,12 +553,12 @@ public class BankTests extends BankTestNGMethods {
 		}
 */
 	
+	@JiraPolicy(logTicketReady=true)
 	@Test(description = "First Test Selenium 3.14", dataProvider = "TestDataParallel")
 	public static void outlookLogin(Map<String, String> brow, Map<String, String> data, ITestContext ctx)
 			throws InterruptedException {
 		System.out.print(" \n Into RAKTests \n ");
 		BankTestSteps steps = new BankTestSteps();
-		String[] lifecycles = TestData.getConfig("dfy").split(";");
 		steps.outlookLogin();
 		}
 	

@@ -6,3 +6,16 @@
 [0712/183350.192:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
 [0712/184100.401:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
 [0712/184100.668:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/172603.439:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/172715.772:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/173050.333:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/173545.984:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/173720.764:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/174240.459:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/174453.748:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0713/174453.993:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/174936.030:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/174946.103:ERROR:crashpad_client_win.cc(747)] crash server failed to launch, no dump captured
+[0713/180158.704:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0713/180206.915:ERROR:crashpad_client_win.cc(747)] crash server failed to launch, no dump captured
+[0713/184543.669:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: The pipe has been ended. (0x6D)

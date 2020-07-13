@@ -1,1 +1,1 @@
-{"Browser":{"BankTests":{"Test_scn_oa_001_tc_001":{"openAir":[{"Platform":"Browser","OS":"Windows","Version":"83","Testname":"openAir","Classname":"BankTests","Data":"Test_scn_oa_001_tc_001","Browser":"Chrome"}]}}}}
+{"Browser":{"BankTests":{"Test_Data_Binding_005":{"outlookLogin":[{"Platform":"Browser","OS":"Windows","Version":"83","Testname":"outlookLogin","Classname":"BankTests","Data":"Test_Data_Binding_005","Browser":"Chrome"}]}}}}
