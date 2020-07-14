@@ -20,3 +20,4 @@ BackBaseTT/projectconfig.properties
 *.xls#
 *.xlsx#
 *.iml
+/bin/
