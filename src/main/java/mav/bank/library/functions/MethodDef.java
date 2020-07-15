@@ -121,20 +121,20 @@ public class MethodDef {
 	}
 
 	public static void sendKeys(By by, String keysToSend) {
-		try
-		{
+//		try
+//		{
 		CommonDef.waitVisible(by, keysToSend);
 		CommonDef.waitClickable(by, keysToSend);
 		CommonDef.clearText(by);
 		CommonDef.sendKeys(by, keysToSend);
-		ExReporter.log(LogStatus.PASS, keysToSend+" has been entered");
+/*		ExReporter.log(LogStatus.PASS, keysToSend+" has been entered");
 		}
 		catch(Exception e)
 		{
 			ExReporter.log(LogStatus.FAIL, "Failed to enter "+keysToSend);
 
 		}
-
+*/
 	}
 
 	public static void sendKeys(WebElement elem, String keysToSend) {
