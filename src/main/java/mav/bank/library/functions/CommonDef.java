@@ -227,7 +227,7 @@ public class CommonDef {
 		try {
 			WebElement elem = findElement(by);
 			elem.click();
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page");
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page");
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.ERROR, "Elements not located in the page");
 		}
@@ -260,7 +260,7 @@ public class CommonDef {
 			WebElement elem = findElement(by);
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elem);
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page");
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page");
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.FAIL, "Elements not located in the page");
 		}
@@ -272,7 +272,7 @@ public class CommonDef {
 			WebElement elem = findElement(by);
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elem);
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page: " + elemname);
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page: " + elemname);
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.ERROR, "Elements not located in the page: " + elemname);
 		}
@@ -283,7 +283,7 @@ public class CommonDef {
 			WebDriver driver = DriverFactory.getCurrentDriver();
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elem);
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page: " + elemname);
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page: " + elemname);
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.ERROR, "Elements not located in the page: " + elemname);
 		}
@@ -295,7 +295,7 @@ public class CommonDef {
 			WebElement elem = driver.findElement(by);// findElement(by);
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elem);
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page: " + elemname);
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page: " + elemname);
 		} catch (Exception E) {
 		}
 	}
@@ -304,7 +304,7 @@ public class CommonDef {
 		try {
 			WebElement elem = findElement(by);
 			elem.click();
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page: " + elemname);
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page: " + elemname);
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.FAIL, "Elements not located in the page");
 		}
@@ -315,7 +315,7 @@ public class CommonDef {
 			WebDriver driver = DriverFactory.getCurrentDriver();
 			Thread.sleep(10000);
 			driver.findElement(by).click();
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page: " + elemname);
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page: " + elemname);
 		} catch (Exception E) {
 		}
 	}
@@ -323,7 +323,7 @@ public class CommonDef {
 	public static void click(WebElement elem) {
 		try {
 			elem.click();
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page");
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page");
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.FAIL, "Elements not located in the page");
 		}
@@ -332,7 +332,7 @@ public class CommonDef {
 	public static void click(WebElement elem, String elementname) {
 		try {
 			elem.click();
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page :" + elementname);
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page :" + elementname);
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.FAIL, "Elements not located in the page: " + elementname);
 		}
