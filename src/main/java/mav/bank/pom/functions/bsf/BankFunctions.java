@@ -3803,8 +3803,13 @@ public class BankFunctions {
 			ArrayList<String> rowExecution = new ArrayList<String>();
 			String[] elementList = TestData.getConfig("rowDriver").split("_");
 			int rowCount=elementList.length;
-			
-			for(int i=0;i<elementList.length;i++) rowExecution.add(elementList[i]);
+			System.out.println("rowCount=" + rowCount);
+
+			for(int i=0;i<elementList.length;i++) 
+				{
+					rowExecution.add(elementList[i]);
+					System.out.println(elementList[i]);
+				}
 			
 			for(int i=1;i<=rowCount;i++)
 			{

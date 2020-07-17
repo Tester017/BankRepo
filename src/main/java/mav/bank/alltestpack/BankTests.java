@@ -553,7 +553,7 @@ public class BankTests extends BankTestNGMethods {
 		}
 */
 	
-	@JiraPolicy(logTicketReady=true)
+	@JiraPolicy(logTicketReady=false)
 	@Test(description = "First Test Selenium 3.14", dataProvider = "TestDataParallel")
 	public static void outlookLogin(Map<String, String> brow, Map<String, String> data, ITestContext ctx)
 			throws InterruptedException {
