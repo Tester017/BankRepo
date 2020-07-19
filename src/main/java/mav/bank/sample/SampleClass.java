@@ -7,16 +7,13 @@ import mav.bank.library.functions.CommonDef;
 public class SampleClass {
 
 	public static void main(String[] args) {
-
-		Class thisClass[] = { CommonDef.class };
-		for (Class cl : thisClass) {
-			Method declaredMethod[] = cl.getDeclaredMethods();
-			System.out.println("Number of Methods: "+declaredMethod.length);
-			for (Method a : declaredMethod) {
-				System.out.println(a);
-			}
+		
+		Method[] method = CommonDef.class.getDeclaredMethods();
+		System.out.println("Number of Methods: "+method.length);
+		for (Method methods:method) {
+			System.out.println(methods);
 		}
-
+		
 	}
 
 }
