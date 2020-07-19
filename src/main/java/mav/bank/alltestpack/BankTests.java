@@ -553,7 +553,7 @@ public class BankTests extends BankTestNGMethods {
 		}
 */
 	
-	@JiraPolicy(logTicketReady=false)
+	@JiraPolicy(logTicketReady=true)
 	@Test(description = "First Test Selenium 3.14", dataProvider = "TestDataParallel")
 	public static void outlookLogin(Map<String, String> brow, Map<String, String> data, ITestContext ctx)
 			throws InterruptedException {
@@ -576,6 +576,7 @@ public class BankTests extends BankTestNGMethods {
 			break;
 		case "openAirProcess":
 			steps.updateTimesheet();
+			// small change by daniel in pavithra system to check git sync
 			break;	
 		
 		}

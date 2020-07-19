@@ -3810,26 +3810,33 @@ public class BankFunctions {
 					rowExecution.add(elementList[i]);
 					System.out.println(elementList[i]);
 				}
-			
-			for(int i=1;i<=rowCount;i++)
+			System.out.println(rowExecution);
+			int i=1;
+			for(String weekInput : rowExecution) 
 			{
 				CommonDef.dropdown(openAirHome.DropDown("ts_c1_r"+i), TestData.getConfig("project"+i));
 				CommonDef.dropdown(openAirHome.DropDown("ts_c2_r"+i), TestData.getConfig("task"+i));
 				CommonDef.dropdown(openAirHome.DropDown("ts_c3_r"+i), TestData.getConfig("timeType"+i));
 				CommonDef.dropdown(openAirHome.DropDown("ts_c4_r"+i), TestData.getConfig("location"+i));
 				
-				for (String weekInput : rowExecution) 
-				{
+				
+					System.out.println("weekInput"+weekInput);
+
 					String[] weeks = weekInput.split(";");
+					
 					for (String week : weeks) 
 					{
+						System.out.println("week"+week);
+
 						String column = "ts_c"+weekColumn.get(week)+"_r"+i;
-						MethodDef.sendKeys(openAirHome.inputHours(column), TestData.getConfig(weekInput+i));
+						MethodDef.sendKeys(openAirHome.inputHours(column), TestData.getConfig(week+i));
 						MethodDef.click(openAirHome.addtlInfoLink(column));
 						CommonDef.dropdown(openAirHome.premiseSelect(),TestData.getConfig("premise"));	
 						MethodDef.click(openAirHome.addtlInfoOK());
 					}
-				}
+				i++;
+				if(i>rowCount) break;
+				
 			}
 			
 //			CommonDef.dropdown(openAirHome.DropDown("ts_c1_r1"), TestData.getConfig("project"));

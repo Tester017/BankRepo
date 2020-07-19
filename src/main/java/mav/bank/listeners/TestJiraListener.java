@@ -19,7 +19,11 @@ public class TestJiraListener implements ITestListener {
 	@Override
 	public void onTestSuccess(ITestResult result) {
 		// TODO Auto-generated method stub
-
+		System.out.println("Test is passed");
+		JiraServiceProvider jiraSp = new JiraServiceProvider("https://maveric2.atlassian.net",
+				"danielf@maveric-systems.com", "MwQWorVsUF2rAr0OLFwe8051", "BAT");
+		jiraSp.updateStatusToDone("BAT-7");
+		
 	}
 
 	@Override
