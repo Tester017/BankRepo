@@ -238,7 +238,7 @@ public class CommonDef {
 			switchToNative();
 			WebDriver driver = DriverFactory.getCurrentDriver();
 			((IOSDriver) driver).hideKeyboard("Done");
-			ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page");
+			ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page");
 			switchToWebview();
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.ERROR, "Elements not located in the page");
@@ -251,7 +251,7 @@ public class CommonDef {
 		WebElement elem = driver.findElement(by);// findElement(by);
 		JavascriptExecutor executor = (JavascriptExecutor) driver;
 		executor.executeScript("arguments[0].click();", elem);
-		ExReporter.log(LogStatus.INFO, "Element successfully clicked in the page: " + elemname);
+		ExReporter.log(LogStatus.PASS, "Element successfully clicked in the page: " + elemname);
 	}
 
 	public static void clickJS(By by) {
@@ -359,7 +359,7 @@ public class CommonDef {
 			WebElement t = findElement(by);
 			t.sendKeys(keysToSend);
 			Thread.sleep(1000);
-			ExReporter.log(LogStatus.INFO, "Text is entered successfully :" + keysToSend);
+			ExReporter.log(LogStatus.PASS, "Text is entered successfully :" + keysToSend);
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.FAIL, "Text not entered successfully");
 		}
@@ -368,7 +368,7 @@ public class CommonDef {
 	public static void sendKeys(WebElement elem, String keysToSend) {
 		try {
 			elem.sendKeys(keysToSend);
-			ExReporter.log(LogStatus.INFO, "Text is entered successfully :" + keysToSend);
+			ExReporter.log(LogStatus.PASS, "Text is entered successfully :" + keysToSend);
 		} catch (Exception E) {
 			ExReporter.log(LogStatus.FAIL, "Text not entered successfully");
 		}
@@ -394,16 +394,16 @@ public class CommonDef {
 			waitloop : for(int i =0; i < 10 ; i++){
 			if(driver.findElement(by).isDisplayed()){
 				MethodDef.click(by);
-				ExReporter.log(LogStatus.INFO, "Transaction Post Cut off Time");
+				ExReporter.log(LogStatus.PASS, "Transaction Post Cut off Time");
 				break waitloop;
 			}else if(driver.findElement(by1).isDisplayed()){
-				ExReporter.log(LogStatus.INFO, "Transaction within Cut off Time");
+				ExReporter.log(LogStatus.PASS, "Transaction within Cut off Time");
 				break waitloop;
 			}
 			Thread.sleep(1000);
 			}
 		} catch (Exception e) {
-			ExReporter.log(LogStatus.INFO, "Element Not Located in Page");
+			ExReporter.log(LogStatus.PASS, "Element Not Located in Page");
 		}
 	}
 
@@ -432,7 +432,7 @@ public class CommonDef {
 			WebDriver driver = DriverFactory.getCurrentDriver();
 			WebDriverWait wait = new WebDriverWait(driver, Integer.parseInt(ProjectConfig.getPropertyValue("timeout")));
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
-			ExReporter.log(LogStatus.INFO, "Element is visible :" + name);
+			ExReporter.log(LogStatus.PASS, "Element is visible :" + name);
 		} catch (Exception e) {
 			ExReporter.log(LogStatus.ERROR, "Element not visible :" + name);
 		}
@@ -833,12 +833,12 @@ public class CommonDef {
 						"Text is populated in the Element: " + text + " ||actual|| " + elem.getAttribute("innerHTML"));
 				return true;
 			} else {
-				ExReporter.log(LogStatus.INFO, "Text is not populated in the Element: " + text + " ||actual|| "
+				ExReporter.log(LogStatus.PASS, "Text is not populated in the Element: " + text + " ||actual|| "
 						+ elem.getAttribute("innerHTML"));
 				return false;
 			}
 		} catch (Exception e) {
-			ExReporter.log(LogStatus.INFO, "Error in accessing Text : " + e.getMessage());
+			ExReporter.log(LogStatus.PASS, "Error in accessing Text : " + e.getMessage());
 		}
 		return false;
 	}
@@ -850,12 +850,12 @@ public class CommonDef {
 						"Text is populated in the Element: " + text + " ||actual|| " + elem.getAttribute("innerHTML"));
 				return true;
 			} else {
-				ExReporter.log(LogStatus.INFO, "Text is not populated in the Element: " + text + " ||actual|| "
+				ExReporter.log(LogStatus.PASS, "Text is not populated in the Element: " + text + " ||actual|| "
 						+ elem.getAttribute("innerHTML"));
 				return false;
 			}
 		} catch (Exception e) {
-			ExReporter.log(LogStatus.INFO, "Error in accessing Text : " + e.getMessage());
+			ExReporter.log(LogStatus.PASS, "Error in accessing Text : " + e.getMessage());
 		}
 		return false;
 	}
@@ -1020,7 +1020,7 @@ public class CommonDef {
 			if(exRate[0].equalsIgnoreCase(ProjectConfig.getPropertyValue(Currency)))
 				ExReporter.log(LogStatus.PASS, "Exchange Rate Validation Passed");
 			else
-				ExReporter.log(LogStatus.INFO, "Exchange Rate Validation Failed");
+				ExReporter.log(LogStatus.PASS, "Exchange Rate Validation Failed");
 		} catch (Exception e) {
 			ExReporter.log(LogStatus.ERROR, "Exchange Rate Validation Failed");
 		}
@@ -1393,7 +1393,7 @@ public class CommonDef {
 		Select sel= new Select(t);
 		sel.selectByVisibleText(keysToSend);
 		Thread.sleep(1500);
-		ExReporter.log(LogStatus.INFO, "Text is entered successfully :" + keysToSend);
+		ExReporter.log(LogStatus.PASS, "Text is entered successfully :" + keysToSend);
 		} catch (Exception E) {
 		ExReporter.log(LogStatus.FAIL, "Text not entered successfully");
 		}
@@ -1418,10 +1418,10 @@ public class CommonDef {
 			if(driver.findElement(by).isDisplayed()){
 				MethodDef.click(by);
 				System.out.println("test");
-				ExReporter.log(LogStatus.INFO, "Custom Amount Selected");
+				ExReporter.log(LogStatus.PASS, "Custom Amount Selected");
 			}
 		} catch (Exception e) {
-			//ExReporter.log(LogStatus.INFO, "Beneficiary is Invalid");
+			//ExReporter.log(LogStatus.PASS, "Beneficiary is Invalid");
 			System.out.println("catch");
 		}
 	}
@@ -1435,16 +1435,16 @@ public class CommonDef {
 			waitloop : for(int i=0 ; i<10 ; i++){
 				if(driver.findElement(by).isDisplayed()){
 				MethodDef.click(by);
-				ExReporter.log(LogStatus.INFO, "Ok Button is clicked");
+				ExReporter.log(LogStatus.PASS, "Ok Button is clicked");
 				break waitloop;
 				}else if(driver.findElement(by).isDisplayed()){
-					ExReporter.log(LogStatus.INFO, "Ok Button is not Available");
+					ExReporter.log(LogStatus.PASS, "Ok Button is not Available");
 					break waitloop;
 				}
 				Thread.sleep(1000);
 			}
 		} catch (Exception e) {
-			ExReporter.log(LogStatus.INFO, "Element not Available");
+			ExReporter.log(LogStatus.PASS, "Element not Available");
 		}
 	}
 	
